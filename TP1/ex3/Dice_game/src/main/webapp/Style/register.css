@@ -1,0 +1,47 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; /* Add a background color to body */
+}
+
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 500px;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5); /* Correct inset syntax */
+    border-radius: 20px;
+    margin: 15px;
+    background-color: #1f0566;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Add align-items to center content horizontally */
+    color: white;
+    text-align: center;
+}
+
+input {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+input[type="submit"]{
+    background-color: #6b5b95;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+input[type="submit"]:hover{
+    background-color: #ffffff;
+    color: rgb(1, 1, 1);
+    cursor: pointer;
+}
