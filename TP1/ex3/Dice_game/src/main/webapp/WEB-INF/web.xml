@@ -6,9 +6,6 @@
     <welcome-file-list>
         <welcome-file>/WEB-INF/Pages/loginForm.jsp</welcome-file>
     </welcome-file-list>
-    <error-page>
-        <exception-type>java.lang.Exception</exception-type>
-        <location>/WEB-INF/Pages/error.jsp</location>
-    </error-page>
+
 
 </web-app>

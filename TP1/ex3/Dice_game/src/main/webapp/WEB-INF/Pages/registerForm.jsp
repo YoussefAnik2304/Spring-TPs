@@ -14,7 +14,7 @@
 <body>
 <div class="register">
     <form action="/RegisterServlet" method="post">
-        username : <input type="text" name="username">
+        username : <input type="text" name="login">
         password : <input type="password" name="password">
         <input type="submit" value="register">
     </form>

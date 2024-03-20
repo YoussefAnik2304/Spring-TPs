@@ -10,7 +10,7 @@ import org.example.dice_game.models.Message;
 
 import java.io.IOException;
 import java.util.*;
-
+@WebFilter("/*")
 public class ExceptionFilter extends HttpFilter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -21,7 +21,7 @@ public class ExceptionFilter extends HttpFilter {
         } catch (Exception e) {
             System.out.println("problem");
             List<Message> list = new ArrayList<>();
-            list.add(new Message("Une erreur est survenue veuillez consulter le fichier journal pour plus de détails",
+            list.add(new Message("Une erreur est survenue veuillez consulter le fichier journal pour plus de détails\n"+e.getLocalizedMessage(),
                     Message.ERROR));
             request.setAttribute("messages", list);
             getServletContext().getRequestDispatcher("/WEB-INF/Pages/error.jsp").forward(request, response);

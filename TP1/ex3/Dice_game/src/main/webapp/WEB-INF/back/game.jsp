@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-
+<a href="${pageContext.request.contextPath}/playerStats">players stats</a>
 </body>
 </html>

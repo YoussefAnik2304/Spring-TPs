@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
         List<player> players= (List<player>) context.getAttribute("Players");
 
          if(players.isEmpty()){
-            context.getRequestDispatcher("/WEB-INF/Pages/regiserForm.jsp").forward(req,resp);
+            context.getRequestDispatcher("/WEB-INF/Pages/registerForm.jsp").forward(req,resp);
             System.out.println("players is empty");
         }else{
             for (player p : players){

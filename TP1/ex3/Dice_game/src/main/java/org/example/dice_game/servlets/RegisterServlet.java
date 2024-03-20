@@ -37,6 +37,7 @@ public class RegisterServlet extends HttpServlet {
             }
         }
         players.add(newPlayer);
+        System.out.println("register : "+newPlayer.getLogin());
         context.setAttribute("Players",players);
         session.setAttribute("logedInPlayer",newPlayer);
         context.getRequestDispatcher("/WEB-INF/back/game.jsp").forward(req,resp);
