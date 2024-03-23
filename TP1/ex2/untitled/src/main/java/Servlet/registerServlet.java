@@ -1,7 +1,6 @@
-package com.example.ex2;
+package Servlet;
 
-import com.example.ex2.Player;
-import com.sun.net.httpserver.HttpContext;
+import Model.Player;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,18 +14,38 @@ import java.util.ArrayList;
 public class registerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        System.out.println("doget");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext context=req.getServletContext();
+
         ArrayList<Player> players = (ArrayList<Player>) context.getAttribute("Players");
         String username=req.getParameter("username");
         String password =req.getParameter("password");
-        players.add(new Player(username,password,0));
-        Player.setNbrPlayers(Player.getNbrPlayers()+1);
-        context.setAttribute("Players",players);
-        req.getRequestDispatcher("/game.jsp").forward(req,resp);
+        Player player=new Player(username,password,0);
+        if(players!=null){
+            if (player != null) {
+                for (Player tmp : players) {
+                    if (player.getUsername().equals(tmp.getUsername())) {
+                        System.out.println("player alreay exists ");
+                        getServletContext().getRequestDispatcher("index.jsp").forward(req,resp);
+                        return;
+                    }
+                }
+            } else {
+                System.out.println("valeur null");
+                getServletContext().getRequestDispatcher("index.jsp").forward(req,resp);
+                return;
+            }
+        }else{
+            System.out.println("register filter ");
+            players=new ArrayList<>();
+            players.add(new Player(username,password,0));
+            Player.setNbrPlayers(Player.getNbrPlayers()+1);
+            context.setAttribute("Players",players);
+        getServletContext().getRequestDispatcher("/WEB-INF/view/game.jsp").forward(req,resp);
+        }
     }
 }

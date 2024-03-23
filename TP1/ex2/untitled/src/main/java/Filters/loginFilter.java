@@ -1,6 +1,6 @@
-package com.example.ex2;
+package Filters;
 
-import com.example.ex2.Player;
+import Model.Player;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpFilter;
@@ -31,15 +31,13 @@ public class loginFilter extends HttpFilter {
                         session.setAttribute("logedInPlayer", player);
                     } else {
                         System.out.println("password wrong");
-                        request.getRequestDispatcher("/index.jsp").forward(req, res);
-                        return;
+                        getServletContext().getRequestDispatcher("index.jsp").forward(req,res);                        return;
                     }
                 }
             }
         }else {
             System.out.println("no players found ");
-            request.getRequestDispatcher("/register.jsp").forward(req,res);
-            return ;
+            getServletContext().getRequestDispatcher("src/main/webapp/WEB-INF/view/register.jsp").forward(req,res);            return ;
         }
         chain.doFilter(req, res);
     }

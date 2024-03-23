@@ -1,6 +1,4 @@
-package com.example.ex2;
-
-import java.util.Objects;
+package Model;
 
 public class Player {
     private String username,password;

@@ -1,4 +1,4 @@
-package com.example.ex2;
+package Servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -21,6 +21,5 @@ public class loginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/game.jsp").forward(req,resp);
-    }
+        getServletContext().getRequestDispatcher("/WEN-INF/view/game.jsp").forward(req,resp);    }
 }

@@ -1,6 +1,6 @@
-package com.example.ex2;
+package Filters;
 
-import com.example.ex2.Player;
+import Model.Player;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpFilter;
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class registerFilter extends HttpFilter {
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
+        System.out.println("filter");
         HttpServletRequest request = (HttpServletRequest) req;
         ServletContext context=request.getServletContext();
 
@@ -26,16 +27,17 @@ public class registerFilter extends HttpFilter {
                 for (Player tmp : players) {
                     if (player.getUsername().equals(tmp.getUsername())) {
                         System.out.println("player alreay exists ");
-                        req.getRequestDispatcher("/index.jsp").forward(req, res);
+                        getServletContext().getRequestDispatcher("index.jsp").forward(req,res);
                         return;
                     }
                 }
             } else {
                 System.out.println("valeur null");
-                request.getRequestDispatcher("/index.jsp").forward(req, res);
+                getServletContext().getRequestDispatcher("index.jsp").forward(req,res);
                 return;
             }
         }else{
+            System.out.println("register filter ");
             players=new ArrayList<>();
             context.setAttribute("Players",players);
         }
