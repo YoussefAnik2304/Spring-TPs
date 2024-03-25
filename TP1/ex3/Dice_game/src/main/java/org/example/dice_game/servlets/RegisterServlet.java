@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.example.dice_game.models.Game;
 import org.example.dice_game.models.player;
 
 import java.io.IOException;
@@ -40,6 +41,8 @@ public class RegisterServlet extends HttpServlet {
         System.out.println("register : "+newPlayer.getLogin());
         context.setAttribute("Players",players);
         session.setAttribute("logedInPlayer",newPlayer);
+        Game game =new Game(newPlayer);
+        session.setAttribute("game",game);
         context.getRequestDispatcher("/WEB-INF/back/game.jsp").forward(req,resp);
     }
 

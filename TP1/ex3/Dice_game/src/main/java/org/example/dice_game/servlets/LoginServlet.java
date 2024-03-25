@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.example.dice_game.models.Game;
 import org.example.dice_game.models.player;
 
 import java.util.*;
@@ -33,7 +34,9 @@ public class LoginServlet extends HttpServlet {
         }else{
             for (player p : players){
                 if(p.getLogin().equalsIgnoreCase(login)){
+                    Game game =new Game(p);
                     session.setAttribute("logedInPlayer",p);
+                    session.setAttribute("game",game);
                     context.getRequestDispatcher("/WEB-INF/back/game.jsp").forward(req,resp);
                     return ;
                 }

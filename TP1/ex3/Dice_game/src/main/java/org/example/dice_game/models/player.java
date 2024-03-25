@@ -7,11 +7,11 @@ public class player {
 
     private String password;
 
-    private double score;
+    private int score;
 
-    private double bestScore;
+    private int bestScore;
 
-    public player( String login, String password, double score, double bestScore) {
+    public player( String login, String password, int score, int bestScore) {
 
         this.login = login;
         this.password = password;
@@ -41,19 +41,19 @@ public class player {
         this.password = password;
     }
 
-    public double getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(int score) {
         this.score = score;
     }
 
-    public double getBestScore() {
+    public int getBestScore() {
         return bestScore;
     }
 
-    public void setBestScore(double bestScore) {
+    public void setBestScore(int bestScore) {
         this.bestScore = bestScore;
     }
 }
